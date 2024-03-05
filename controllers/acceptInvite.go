@@ -19,10 +19,7 @@ import (
 // @Accept json
 // @Produce json
 func AcceptInviteHandler(c *gin.Context) {
-	// var acceptRequest struct {
-	// 	EventID uint `json:"event_id" binding:"required"`
-	// 	UserID  uint `json:"user_id" binding:"required"`
-	// }
+
 	var invitations []models.Invitation
 	var acceptRequest models.AcceptRequest
 	if err := c.ShouldBindJSON(&acceptRequest); err != nil {

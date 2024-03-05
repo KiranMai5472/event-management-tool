@@ -55,11 +55,9 @@ func InviteHandler(c *gin.Context) {
 }
 
 func eventExists(eventID uint) bool {
-	// Implement logic to check if the event exists in the database For demonstration purposes, returning true for any event ID
 	return true
 }
 
 func userExists(userID uint) bool {
-	// Implement logic to check if the user exists in the database For demonstration purposes, returning true for any user ID
 	return true
 }

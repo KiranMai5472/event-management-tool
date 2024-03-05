@@ -1,11 +1,6 @@
 package controllers
 
 import (
-	//"net/http"
-
-	//"github.com/KiranMai5472/event-management-tool/Constants"
-	//"github.com/KiranMai5472/event-management-tool/database"
-	//"github.com/KiranMai5472/event-management-tool/logger"
 	"crypto/sha256"
 	"encoding/hex"
 	"fmt"
@@ -18,7 +13,6 @@ import (
 	"github.com/KiranMai5472/event-management-tool/services"
 	"github.com/KiranMai5472/event-management-tool/utils"
 	"github.com/gin-gonic/gin"
-	//"github.com/golang-jwt/jwt/v4"
 )
 
 // @Summary SignUp Api.
@@ -96,10 +90,6 @@ func SignUpHandler(c *gin.Context) {
 		return
 	}
 
-	// Hash the password using SHA-256
-	//hashedPassword := hashPassword(newUser.Password)
-
-	// Replace the plaintext password with the hashed password
 	//newUser.Password = hashedPassword
 
 	// Add the new user to the users slice

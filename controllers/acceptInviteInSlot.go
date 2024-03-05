@@ -10,7 +10,6 @@ import (
 	"github.com/KiranMai5472/event-management-tool/models"
 	"github.com/KiranMai5472/event-management-tool/services"
 	"github.com/gin-gonic/gin"
-	//"github.com/sirupsen/logrus"
 )
 
 // @Summary Accept Invite in slot Api.
@@ -80,7 +79,6 @@ func AcceptInviteInSlot(c *gin.Context) {
 	fmt.Println(endTime)
 
 	// Check if the invitation time falls within the event time slot
-	//invitationTime := time.Now() // Assuming the current time is used for invitation time
 
 	if newEventStartTime.Before(endTime) && newEventEndTime.After(startTime) {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Cannot accept invitation, as it conflicts with event time slot"})
