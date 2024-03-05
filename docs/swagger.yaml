@@ -1,0 +1,234 @@
+definitions:
+  GetEvent:
+    properties:
+      host:
+        type: string
+      id:
+        type: integer
+      location:
+        type: string
+      name:
+        type: string
+    type: object
+  SlotAccept:
+    properties:
+      eventAccept:
+        type: integer
+    type: object
+  Token:
+    properties:
+      token:
+        type: string
+    type: object
+  UsetToken:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.AcceptRequest:
+    properties:
+      event_id:
+        type: integer
+      user_id:
+        type: integer
+    required:
+    - event_id
+    - user_id
+    type: object
+  models.OutPutOfInvite:
+    properties:
+      message:
+        type: string
+    type: object
+  models.UserSignUp:
+    properties:
+      fullname:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  models.userLogin:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /user/v1/accept:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint gives info of the acceptence the invitation.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/models.AcceptRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: Accept Invite.
+      tags:
+      - Accept Invite.
+  /user/v1/acceptslot/:user_id:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint gives info of the acceptence the invitation in the
+        respective slots or time period which means if the slot is alraedy ocupied
+        then he cannot join the other event but if the timmings is out of that event
+        then event can be accepted.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/SlotAccept'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: Accept Invite in slot Api.
+      tags:
+      - Accept Invite in slot.
+  /user/v1/event:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint allows you to create a event with event details .
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/GetEvent'
+      - description: Accept Request Object
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: create Event Api.
+      tags:
+      - create Invite Api.
+  /user/v1/invite:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint gives info of the sending the invitation.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/models.AcceptRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: Send Invite Api.
+      tags:
+      - Send Invite.
+  /user/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint gives API Authentication makes a user's account more
+        secure by adding that additional layer of authentication which asked user
+        to enter there user name and password and check if those are valid or not.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/models.userLogin'
+      - description: Accept Request Object
+        in: header
+        name: token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: UserLogin
+      tags:
+      - User Login.
+  /user/v1/signup:
+    post:
+      consumes:
+      - application/json
+      description: This API is used to create a new User and a User Registration in
+        a single request.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/models.UserSignUp'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OutPutOfInvite'
+      summary: SignUp Api.
+      tags:
+      - SignUp.
+  /user/v1/token:
+    post:
+      consumes:
+      - application/json
+      description: This endpoint gives an access token for use with the API.
+      parameters:
+      - description: Accept Request Object
+        in: body
+        name: Body
+        required: true
+        schema:
+          $ref: '#/definitions/UsetToken'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Token'
+      summary: Get Token.
+      tags:
+      - Get Token.
+swagger: "2.0"
